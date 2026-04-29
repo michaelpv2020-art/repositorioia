@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encuesta — Inteligencia Artificial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PANTALLA: Encuesta -->
+  <div id="screen-survey" class="screen active">
+    <header class="survey-header">
+      <div class="header-inner">
+        <span class="logo">IA<em>Survey</em></span>
+        <div class="progress-wrap">
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <span class="progress-text" id="progress-text">1 / 6</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="survey-main">
+      <div class="question-area" id="question-area">
+        <p class="q-number" id="q-number">Pregunta 1</p>
+        <h2 class="q-text" id="q-text"></h2>
+        <p class="q-hint hidden" id="q-hint">Puedes seleccionar varias opciones</p>
+        <div class="options-list" id="options-list"></div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-ghost" id="btn-prev" onclick="prevQ()">← Anterior</button>
+        <button class="btn btn-primary" id="btn-next" onclick="nextQ()">Siguiente →</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- PANTALLA: Resultados -->
+  <div id="screen-results" class="screen">
+    <header class="survey-header">
+      <div class="header-inner">
+        <span class="logo">IA<em>Survey</em></span>
+        <button class="btn btn-ghost" onclick="showScreen('survey'); resetSurvey()">← Nueva respuesta</button>
+      </div>
+    </header>
+
+    <main class="results-main">
+      <div class="results-hero">
+        <h1>Resultados</h1>
+        <p>Resumen de todas las respuestas recopiladas</p>
+      </div>
+
+      <div class="charts-grid" id="charts-grid"></div>
+
+      <div class="results-table-wrap">
+        <h3>Respuestas individuales</h3>
+        <table class="results-table" id="results-table">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- PANTALLA: Gracias -->
+  <div id="screen-thanks" class="screen">
+    <div class="thanks-center">
+      <div class="thanks-icon">✓</div>
+      <h2>¡Gracias por participar!</h2>
+      <p>Tu respuesta ha sido registrada.</p>
+      <div class="thanks-actions">
+        <button class="btn btn-primary" onclick="showScreen('survey'); resetSurvey()">Responder de nuevo</button>
+        <button class="btn btn-ghost" onclick="loadResults(); showScreen('results')">Ver resultados →</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="survey.js"></script>
+</body>
+</html>
